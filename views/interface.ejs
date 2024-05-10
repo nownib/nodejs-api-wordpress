@@ -1,1 +1,141 @@
-<div>alo</div>
+<!-- views/tiki.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Product</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        /* background-color: rgb(57, 83, 83); */
+    }
+
+    .create-container {
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+    .title {
+        text-transform: uppercase;
+        color: #d15803;
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 20px;
+    }
+
+    .form-control {
+        border: solid 3px rgba(199, 8, 8, 0.981);
+    }
+
+    .product-name {
+        max-width: 300px;
+        /* Đặt chiều rộng tối đa của tên sản phẩm */
+        overflow: hidden;
+        word-wrap: break-word;
+        /* Cho phép tên sản phẩm xuống dòng khi không đủ không gian */
+        white-space: normal;
+        /* Loại bỏ thuộc tính white-space: nowrap; */
+    }
+    .product-group{
+        text-align: center;
+    }
+    .group-title{
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div className="create-container">
+            <form action="/api" method="post">
+                <div class="container col-12 col-sm-5 d-flex flex-column gap-3 py-3">
+                    <h1 class="title text-center mb-4">Create Product</h1>
+                    <div class="form-group">
+                        <label for="nameProduct">Name Product</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="stockQuantity">Stock Quantity</label>
+                        <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="regular_price">Regular Price</label>
+                        <input type="text" class="form-control" id="price" name="price" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <input type="text" class="form-control" id="description" name="description" min="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="src">Image Link</label>
+                        <input type="url" class="form-control" id="image" name="image" min="1" required>
+                    </div>
+                    <div className="text-center">
+                        <button type="submit" class="btn btn-warning">CREATE</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <div class="table-users mt-3">
+            <h3 class="title">Table Product</h3>
+            <table class="table table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col" class="group-title">ID</th>
+                        <th scope="col" class="group-title">What your name?</th>
+                        <th scope="col" class="group-title">Giá cả phải chăng</th>
+                        <th scope="col" class="group-title">Ca tê gô ri</th>
+                        <th scope="col" class="group-title">Còn hàng hông?</th>     
+                        <th class="group-title">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% productList.forEach(function(product, index){ %>
+                        <tr>
+                            <th scope="row">
+                                <%= index + 1 %>
+                            </th>
+                            <td class="product-name">
+                                <%= product.name %>
+                            </td>
+                            <td class="product-group">
+                                <%= product.regular_price %>
+                            </td>
+                            <td class="product-group">
+                                <%= product.categories[0].name %>
+                            </td>
+                            <td class="product-group">
+                                <%= product.stock_status %>
+                            </td>
+                            <td class="product-group">
+                                <a class="btn btn-warning" href="/update/<%= product.id %> ">
+                                    Edit
+                                </a>
+                                <form style="display: inline;" action="/delete/<%= product.id %>" method="POST">
+                                    <button class="btn btn-danger" type="submit">
+                                        Delete
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }); %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

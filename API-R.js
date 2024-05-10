@@ -1,9 +1,9 @@
 const axios = require('axios');
 
 // Enter your WooCommerce API credentials and the URL of your store
-const consumerKey = 'ck_45bb462004400530d0582cba87f44f11a02b2938';
-const consumerSecret = "cs_c14a083651f7c5949376abdcc35ff97fb573a2b4";
-const storeUrl = 'http://localhost/wordpress';
+const consumerKey = 'ck_dab1dfa0b126d5689b512f4f133fddcdc2b10a54';
+const consumerSecret = "cs_166ee23b0b4e3573a8b6c12cb133029bc4b41d01";
+const storeUrl = 'http://localhost/shop';
 
 // Define the authentication headers
 const headers = {
@@ -12,7 +12,7 @@ const headers = {
 };
 
 // Send a GET request to read product details
-axios.get(`${storeUrl}/wp-json/wc/v3/products/4120`, { headers })
+axios.get(`${storeUrl}/wp-json/wc/v3/products/43`, { headers })
     .then(response => {
         // If the request was successful, display the product details
         console.log('Product Details:', response.data);
