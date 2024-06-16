@@ -3,9 +3,9 @@ const WooCommerceAPI = require("woocommerce-api");
 
 // Tạo một phiên làm việc với WooCommerce
 const woocommerce = new WooCommerceAPI({
-  url: "http://localhost/shop",
-  consumerKey: "ck_dab1dfa0b126d5689b512f4f133fddcdc2b10a54",
-  consumerSecret: "cs_166ee23b0b4e3573a8b6c12cb133029bc4b41d01",
+  consumerKey: "ck_4b0a4bb171a129b188248047d30e17691681b2d0",
+  consumerSecret: "cs_73da654c83fffde5884b591a0baabd9b9c28cac6",
+  url: "https://bootech.store",
   wpAPI: true,
   version: "wc/v3",
 });
@@ -52,9 +52,9 @@ const getProductById = async (productId) => {
 };
 
 const updateProductInfo = async (id, name, price, description, image) => {
-  const consumerKey = "ck_dab1dfa0b126d5689b512f4f133fddcdc2b10a54";
-  const consumerSecret = "cs_166ee23b0b4e3573a8b6c12cb133029bc4b41d01";
-  const storeUrl = "http://localhost/shop";
+  const consumerKey = "ck_4b0a4bb171a129b188248047d30e17691681b2d0";
+  const consumerSecret = "cs_73da654c83fffde5884b591a0baabd9b9c28cac6";
+  const storeUrl = "https://bootech.store";
 
   const WooCommerce = new WooCommerceAPI({
     url: storeUrl,
@@ -68,11 +68,11 @@ const updateProductInfo = async (id, name, price, description, image) => {
     name: name,
     regular_price: price,
     description: description,
-    categories: [{ id: 16 }],
+    categories: [{ id: 97 }],
     images: [
       {
-        src: image
-      }
+        src: image,
+      },
     ],
     // stock_quantity: req.body.quantity
   };
@@ -90,14 +90,14 @@ const updateProductInfo = async (id, name, price, description, image) => {
       }
     );
   });
-  
+
   try {
     const updateProduct = await updateProductPromise;
     console.log("Update thành công", updateProduct);
   } catch (error) {
     console.error("Lỗi khi cập nhật sản phẩm:", error);
   }
-}
+};
 
 module.exports = {
   getProductList,

@@ -1,0 +1,131 @@
+<!-- views/tiki.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Coupon</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: rgb(244, 244, 255);
+    }
+
+    .title {
+        text-transform: uppercase;
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+        font-weight: bold;
+        align-items: center;
+        padding-top: 5px;
+
+    }
+
+    .form-control {
+        border: solid 3px rgba(98, 187, 255, 0.981);
+    }
+
+    .title-group {
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+    }
+
+    .product-name {
+        max-width: 300px;
+        /* Đặt chiều rộng tối đa của tên sản phẩm */
+        overflow: hidden;
+        word-wrap: break-word;
+        /* Cho phép tên sản phẩm xuống dòng khi không đủ không gian */
+        white-space: normal;
+        /* Loại bỏ thuộc tính white-space: nowrap; */
+    }
+
+    .product-group {
+        text-align: center;
+    }
+
+    .container-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .btn:hover {
+        background-color: rgb(10, 46, 248);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div className="create-container">
+            <form action="/coupon/create" method="post">
+                <div class="container d-flex flex-column gap-3 py-3">
+                    <h1 class="title text-center mb-4">Tạo khuyến mãi dựa theo điều kiện cho trước</h1>
+                    <div class="row">
+                        <div class="col-4">
+                            <div class="form-group">
+                                <label for="code" class="title-group">URL website</label>
+                                <input type="text" class="form-control" id="url" name="url" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="code" class="title-group">Consumer Key</label>
+                                <input type="text" class="form-control" id="code" name="consumerKey" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="code" class="title-group">Consumer Secret</label>
+                                <input type="text" class="form-control" id="code" name="consumerSecret" required>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="form-group">
+                                <label for="code" class="title-group">Mã khuyến mãi</label>
+                                <input type="text" class="form-control" id="code" name="code" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="valueDiscount" class="title-group">Giá trị khuyến mãi (%)</label>
+                                <input type="text" class="form-control" id="value" name="value" min="1" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="usageLimit" class="title-group">Số lượng khuyến mãi</label>
+                                <input type="number" class="form-control" id="usage_limit" name="usage_limit" min="1"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label for="usageLimitPerUser" class="title-group">Giới hạn sử dụng cho mỗi người
+                                    dùng</label>
+                                <input type="number" class="form-control" id="usage_limit_per_user"
+                                    name="usage_limit_per_user" min="1" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="start_time" class="title-group">Thời gian bắt đầu</label>
+                                <input type="datetime-local" class="form-control" id="start_time" name="start_time"
+                                    required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="endTime" class="title-group">Thời gian kết thúc</label>
+                                <input type="datetime-local" class="form-control" id="end_time" name="end_time"
+                                    required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container-btn">
+                        <button type="submit" class="btn btn-primary">Tạo Coupon</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -15,7 +15,7 @@
     body {
         margin: 0;
         font-family: Arial, Helvetica, sans-serif;
-        /* background-color: rgb(57, 83, 83); */
+        background-color: rgb(162, 208, 208);
     }
 
     .create-container {
@@ -27,7 +27,7 @@
 
     .title {
         text-transform: uppercase;
-        color: #d15803;
+        color: #2b0255;
         font-size: 30px;
         font-weight: bold;
         text-align: center;
@@ -47,11 +47,28 @@
         white-space: normal;
         /* Loại bỏ thuộc tính white-space: nowrap; */
     }
-    .product-group{
+
+    .product-group {
         text-align: center;
     }
-    .group-title{
+
+    .group-title {
         text-align: center;
+    }
+
+    .title-group {
+        font-weight: bold;
+        color: #031194  ;
+        font-size: 20px;
+    }
+    .container-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+    }
+    .btn:hover {
+        background-color: rgb(222, 102, 17);
     }
 </style>
 
@@ -62,26 +79,26 @@
                 <div class="container col-12 col-sm-5 d-flex flex-column gap-3 py-3">
                     <h1 class="title text-center mb-4">Create Product</h1>
                     <div class="form-group">
-                        <label for="nameProduct">Name Product</label>
+                        <label for="nameProduct" class="title-group">Name Product</label>
                         <input type="text" class="form-control" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="stockQuantity">Stock Quantity</label>
+                        <label for="stockQuantity" class="title-group">Stock Quantity</label>
                         <input type="number" class="form-control" id="quantity" name="quantity" min="1" required>
                     </div>
                     <div class="form-group">
-                        <label for="regular_price">Regular Price</label>
+                        <label for="regular_price" class="title-group">Regular Price</label>
                         <input type="text" class="form-control" id="price" name="price" min="1" required>
                     </div>
                     <div class="form-group">
-                        <label for="description">Description</label>
+                        <label for="description" class="title-group">Description</label>
                         <input type="text" class="form-control" id="description" name="description" min="0" required>
                     </div>
                     <div class="form-group">
-                        <label for="src">Image Link</label>
+                        <label for="src" class="title-group">Image Link</label>
                         <input type="url" class="form-control" id="image" name="image" min="1" required>
                     </div>
-                    <div className="text-center">
+                    <div class="container-btn">
                         <button type="submit" class="btn btn-warning">CREATE</button>
                     </div>
                 </div>
@@ -94,11 +111,11 @@
             <table class="table table-hover table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col" class="group-title">ID</th>
-                        <th scope="col" class="group-title">What your name?</th>
-                        <th scope="col" class="group-title">Giá cả phải chăng</th>
-                        <th scope="col" class="group-title">Ca tê gô ri</th>
-                        <th scope="col" class="group-title">Còn hàng hông?</th>     
+                        <th scope="col" class="group-title">STT</th>
+                        <th scope="col" class="group-title">Tên sản phẩm</th>
+                        <th scope="col" class="group-title">Giá sản phẩm</th>
+                        <th scope="col" class="group-title">Categories</th>
+                        <th scope="col" class="group-title">Tình trạng</th>
                         <th class="group-title">Actions</th>
                     </tr>
                 </thead>
